@@ -1,0 +1,14 @@
+version: '2'
+services:
+  rancher-server:
+    image: 'rancher/server:stable'
+    restart: unless-stopped
+    volumes:
+      - './mysql/data/:/var/lib/mysql'
+    ports:
+      - '8080:8080'
+    networks:
+      - rancher-network
+networks:
+  rancher-network:
+    driver: bridge
